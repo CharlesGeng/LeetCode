@@ -11,18 +11,20 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         if head != None and head.next != None:
             d = {}
             index = 0
             while head.next != None:
-                if head.next in  d:
+                if head.next in d:
                     return True
-                else: 
+                else:
                     d[head] = index
-                    index += 1 
+                    index += 1
                     head = head.next
         return False
-# @lc code=end
 
+
+# @lc code=end

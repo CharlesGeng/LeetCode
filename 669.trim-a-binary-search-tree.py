@@ -20,7 +20,9 @@ class Solution:
         elif root.val > high:
             root = self.trimBST(root.left, low, high)
         else:
-            root.left = self.trimBST(root.left, low, root.val - 1 )
-            root.right = self.trimBST(root.right,  root.val + 1, high)
+            root.left = self.trimBST(root.left, low, root.val - 1)
+            root.right = self.trimBST(root.right, root.val + 1, high)
         return root
+
+
 # @lc code=end
