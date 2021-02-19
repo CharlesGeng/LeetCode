@@ -9,21 +9,18 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         lp = []
         rp = []
-        result = []
+        result = list(s)
         for i, c in enumerate(s):
             if c == "(":
                 lp.append(i)
             elif c == ")":
                 if len(lp) > 0:
-                    lp.pop(len(lp) - 1)
+                    lp.pop()
                 else:
                     rp.append(i)
-            result.append(c)
         lp += rp
-        up = sorted(lp)
-        up.reverse()
-        for i in up:
-            result.pop(i)
+        for i in lp:
+            result[i] = ""
         return "".join(result)
 
 
