@@ -7,18 +7,14 @@
 # @lc code=start
 class Solution:
     def brokenCalc(self, X: int, Y: int) -> int:
-        if X >= Y:
-            return X - Y
-        else:
-            temp = Y
-            counter = 0
-            while X != temp:
-                counter += 1
-                if temp & 1 == 0 and temp > X:
-                    temp >>= 1
-                else:
-                    temp += 1
-            return counter
+        counter = 0
+        while X < Y:
+            counter += 1
+            if Y & 1 == 0:
+                Y >>= 1
+            else:
+                Y += 1
+        return counter + X - Y
 
 
 # @lc code=end
