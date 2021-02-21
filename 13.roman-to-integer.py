@@ -11,12 +11,16 @@ class Solution:
         m2 = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
         sum = 0
-        for k in m1.keys():
-            if k in s:
-                sum += m1[k]
-                s = s.replace(k, "")
-        for c in s:
-            sum += m2[c]
+        sl = list(s)
+        l = len(s)
+        i = 0
+        while i < l:
+            if i + 1 < l and sl[i] + sl[i + 1] in m1.keys():
+                sum += m1[sl[i] + sl[i + 1]]
+                i += 1
+            else:
+                sum += m2[sl[i]]
+            i += 1
         return sum
 
 
