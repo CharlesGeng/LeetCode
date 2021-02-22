@@ -7,10 +7,12 @@
 # @lc code=start
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        # Reverse string
         sn = s[::-1]
         l = len(sn)
         maxSub = ""
         for i in range(l):
+            #
             if l - i < len(maxSub):
                 break
             sub = sn[i]
