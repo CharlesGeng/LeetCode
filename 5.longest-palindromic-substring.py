@@ -11,8 +11,8 @@ class Solution:
         sn = s[::-1]
         l = len(sn)
         maxSub = ""
+        # Find Palindromic Substring in s.
         for i in range(l):
-            #
             if l - i < len(maxSub):
                 break
             sub = sn[i]
