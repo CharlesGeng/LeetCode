@@ -7,23 +7,12 @@
 # @lc code=start
 class Solution:
     def findUnsortedSubarray(self, nums: List[int]) -> int:
-        sortedNums = nums.copy()
-        sortedNums.sort()
-        l = -1
-        for i in range(len(nums)):
-            if sortedNums[i] != nums[i]:
-                l = i
-                break
-        if l == -1:
-            return 0
-
-        j = len(nums) - 1
-        while j > i:
-            if sortedNums[j] != nums[j]:
-                break
-            else:
-                j -= 1
-        return j - l + 1
+        is_same = [a == b for a, b in zip(nums, sorted(nums))]
+        return (
+            0
+            if all(is_same)
+            else len(nums) - is_same.index(False) - is_same[::-1].index(False)
+        )
 
 
 # @lc code=end
