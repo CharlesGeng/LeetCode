@@ -7,22 +7,13 @@
 # @lc code=start
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        pl = list(pattern)
         sl = s.split()
-        if len(pl) != len(sl):
-            return False
-
-        myDic = {}
-        for i in range(len(pl)):
-            if pl[i] not in myDic.keys() and sl[i] not in myDic.values():
-                myDic[pl[i]] = sl[i]
-            elif pl[i] in myDic.keys() and myDic[pl[i]] != sl[i]:
-                return False
-            elif pl[i] not in myDic.keys() and sl[i] in myDic.values():
-                return False
-            else:
-                continue
-        return True
+        return (
+            len(pattern) == len(sl)
+            and len(set(pattern)) == len(set(sl))
+            and len(set(zip(pattern, sl))) == len(set(pattern))
+        )
+        # and len(set(pattern)) == len(set(sl))
 
 
 # @lc code=end
